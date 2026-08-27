@@ -2,6 +2,12 @@
 
 @theme {
   --color-accent: #7DF9FF;
+
+  /* Overrides the default serif font with Old Standard TT */
+  --font-serif: var(--font-old-standard), serif;
+
+  /* Replaced 'display' with 'cursive' to fix the browser rejection */
+  --font-rocker: var(--font-new-rocker), cursive;
 }
 
 @layer base {

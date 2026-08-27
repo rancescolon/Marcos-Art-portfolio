@@ -31,7 +31,7 @@ export default function ContactForm() {
 
     return (
         <section id="contact" className="py-20 px-6 w-full max-w-2xl md:max-w-4xl mx-auto border-t-2 border-black mt-20 scroll-mt-48">
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-8 md:mb-12">Contact</h2>
+            <h2 className="font-rocker text-3xl md:text-5xl uppercase tracking-tight mb-8 md:mb-12">Contact</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 md:gap-10">
                 <input
                     name="name"
@@ -56,7 +56,7 @@ export default function ContactForm() {
                 ></textarea>
                 <button
                     type="submit"
-                    className="self-start mt-4 bg-black text-white px-10 md:px-14 py-3 md:py-5 uppercase text-sm md:text-xl font-black tracking-widest hover:text-accent transition-colors"
+                    className="self-start mt-4 bg-black text-white px-10 md:px-14 py-3 md:py-5 uppercase text-sm md:text-xl font-normal tracking-widest hover:text-accent transition-colors"
                 >
                     Submit
                 </button>

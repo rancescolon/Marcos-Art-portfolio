@@ -1,9 +1,63 @@
+'use client';
+import { useState } from 'react';
 import { getAssetPath } from '@/utils/utils';
 
+//todo: edit the img so they come out cleaner, set up hosting and READ THE CODE
+
+
 export default function Gallery() {
+    const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
+
     const artworks = [
-        { id: 1, title: "Untitled I", year: "2024", imagePath: "/art/piece1.jpg" },
-        { id: 2, title: "Untitled II", year: "2024", imagePath: "/art/piece2.jpg" },
+        {
+            id: 1,
+            title: "300 Brothers",
+            year: "2026",
+            imagePath: "/art/IMG_2676.jpeg",
+            description: "Printed on Fabric\n Overall: 46 in x 48 in"
+        },
+        {
+            id: 2,
+            title: "Tempted 9 times",
+            year: "2025",
+            imagePath: "/art/IMG_2674.jpeg",
+            description: "Acrylic and screenprint on canvas, nine parts\n Overall: 60 in x 48 in\n"
+        },
+        {
+            id: 3,
+            title: "Too Much Is The Point",
+            year: "2026",
+            imagePath: "/art/IMG_2677.jpeg",
+            description: "Fabric, leather and string on canvas\n 43 in x 43 in"
+        },
+        {
+            id: 4,
+            title: "THE RUNNER",
+            year: "2025",
+            imagePath: "/art/IMG_2680.jpeg",
+            description: "Fabric and string on canvas\n 20 in x 20 in"
+        },
+        {
+            id: 5,
+            title: "WATCH ME FLY",
+            year: "2026",
+            imagePath: "/art/IMG_2682.jpeg",
+            description: "Fabric and string on canvas\n 20 in x 20 in"
+        },
+        {
+            id: 6,
+            title: "BORN HERE",
+            year: "2026",
+            imagePath: "/art/IMG_2678.jpeg",
+            description: "Acrylic and screenprint on canvas, four parts\n Overall: 40 in x 32 in"
+        },
+        {
+            id: 7,
+            title: "The fighter",
+            year: "2026",
+            imagePath: "/art/IMG_2669.jpeg",
+            description: "Acrylic and Oil pastel on canvas \n 30 in X 24 in"
+        },
     ];
 
     return (
@@ -11,20 +65,48 @@ export default function Gallery() {
             <div className="flex flex-col gap-24">
                 {artworks.map((art) => (
                     <div key={art.id} className="flex flex-col">
-                        <div className="w-full flex items-center justify-center bg-neutral-50">
+                        {/* Scaled-down clickable image container */}
+                        <div
+                            className="w-full h-[55vh] md:h-[70vh] flex items-center justify-center bg-neutral-50 cursor-pointer group relative overflow-hidden border border-black/10"
+                            onClick={() => setSelectedImage({ src: getAssetPath(art.imagePath), title: art.title })}
+                        >
                             <img
                                 src={getAssetPath(art.imagePath)}
                                 alt={art.title}
-                                className="w-full h-auto object-contain"
+                                className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
                             />
                         </div>
-                        <div className="mt-6 flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-black pb-4">
-                            <h3 className="font-black uppercase text-2xl tracking-tighter">{art.title}</h3>
-                            <span className="text-lg font-bold text-gray-500">{art.year}</span>
+
+                        <div className="mt-6 flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-black pb-4 gap-4">
+                            <div className="flex flex-col gap-1">
+                                <h3 className="font-rocker uppercase text-2xl tracking-tighter">{art.title}</h3>
+                                <p className="text-base text-gray-700 max-w-2xl whitespace-pre-line">{art.description}</p>
+                            </div>
+                            <span className="text-lg font-bold text-gray-500 self-start md:self-center">{art.year}</span>
                         </div>
                     </div>
                 ))}
             </div>
+
+            {/* Fullscreen Lightbox Modal */}
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 overflow-y-auto cursor-zoom-out"
+                    onWheel={() => setSelectedImage(null)}
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <div
+                        className="relative max-w-7xl w-full my-auto flex items-center justify-center"
+                    >
+                        <img
+                            src={selectedImage.src}
+                            alt={selectedImage.title}
+                            className="max-h-[90vh] max-w-full object-contain shadow-2xl cursor-pointer"
+                            onClick={() => setSelectedImage(null)}
+                        />
+                    </div>
+                </div>
+            )}
         </section>
     );
 }

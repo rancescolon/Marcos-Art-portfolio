@@ -11,7 +11,7 @@ export default function Navbar() {
         <nav className="sticky top-0 z-50 bg-white border-b-2 border-black">
             <div className="px-6 py-4 flex justify-between items-start md:items-center gap-6 relative z-50 bg-white">
                 {/* Heavy stacked logo */}
-                <Link href="/" onClick={closeMenu} className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.85] flex flex-col">
+                <Link href="/" onClick={closeMenu} className="font-rocker font-normal text-4xl md:text-6xl uppercase tracking-tighter leading-[0.85] flex flex-col">
                     <span className="text-black">Marcos</span>
                     <span className="text-black">Villa Marin:</span>
                     <span className="text-accent">Portfolio</span>
@@ -41,7 +41,7 @@ export default function Navbar() {
             {/* Mobile Menu Dropdown */}
             {isOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-white border-b-2 border-black flex flex-col px-6 py-8 gap-6 shadow-xl z-40">
-                    <Link href="/#gallery" onClick={closeMenu} className="text-2xl font-black uppercase tracking-widest hover:text-accent transition-colors">
+                    <Link href="/" onClick={closeMenu} className="font-rocker text-4xl md:text-6xl uppercase tracking-tighter leading-[0.85] flex flex-col">
                         Art Work
                     </Link>
                     <Link href="/about" onClick={closeMenu} className="text-2xl font-black uppercase tracking-widest hover:text-accent transition-colors">
