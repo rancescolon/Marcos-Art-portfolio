@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000", "https://www.yourcustomdomain.com") // write the pvo domain
+                        .allowedOrigins("http://localhost:3000", "https://www.yourcustomdomain.com") // TODO: write the pvo domain
                         .allowedMethods("POST", "OPTIONS")
                         .allowedHeaders("*");
             }
