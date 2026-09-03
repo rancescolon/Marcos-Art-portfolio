@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #7DF9FF;
+  --color-accent: #644E84;
 
   /* Overrides the default serif font with Old Standard TT */
   --font-serif: var(--font-old-standard), serif;
 
-  /* Replaced 'display' with 'cursive' to fix the browser rejection */
-  --font-rocker: var(--font-new-rocker), cursive;
+  /* Creates a brand new utility class for Poetsen One */
+  --font-poetsen: var(--font-poetsen-one), sans-serif;
 }
 
 @layer base {
