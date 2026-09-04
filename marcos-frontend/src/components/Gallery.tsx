@@ -2,10 +2,25 @@
 import { useState } from 'react';
 import { getAssetPath } from '@/utils/utils';
 
-//todo: edit the img so they come out cleaner, set up hosting and READ THE CODE
-
 export default function Gallery() {
     const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchStart(e.targetTouches[0].clientY);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (touchStart === null) return;
+        const currentTouch = e.targetTouches[0].clientY;
+        const diff = Math.abs(currentTouch - touchStart);
+
+        // Close modal if user scrolls/swipes more than 40px on mobile
+        if (diff > 40) {
+            setSelectedImage(null);
+            setTouchStart(null);
+        }
+    };
 
     const artworks = [
         {
@@ -81,7 +96,6 @@ export default function Gallery() {
                                 <h3 className="font-poetsen uppercase text-2xl tracking-tighter">{art.title}</h3>
                                 <p className="text-base text-gray-700 max-w-2xl whitespace-pre-line">{art.description}</p>
                             </div>
-                            {/* Updated year span class to use font-poetsen */}
                             <span className="font-poetsen font-normal text-lg text-gray-500 self-start md:self-center">{art.year}</span>
                         </div>
                     </div>
@@ -93,6 +107,8 @@ export default function Gallery() {
                 <div
                     className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 overflow-y-auto cursor-zoom-out"
                     onWheel={() => setSelectedImage(null)}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
                     onClick={() => setSelectedImage(null)}
                 >
                     <div
