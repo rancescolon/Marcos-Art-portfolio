@@ -42,7 +42,7 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "marcos-frontend/.next,marcos-frontend/public,marcos-frontend/package.json"
-          target: "/root/Marcos-Art-portfolio/"
+          target: "/root/Marcos-Art-portfolio/marcos-frontend"
           strip_components: 1
 
       - name: Copy Backend JAR to Droplet
@@ -52,7 +52,7 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "portfolio-backend/target/portfolio-backend-0.0.1-SNAPSHOT.jar"
-          target: "/root/Marcos-Art-portfolio/"
+          target: "/root/Marcos-Art-portfolio/portfolio-backend"
           strip_components: 1
 
       - name: Restart Services on Droplet
