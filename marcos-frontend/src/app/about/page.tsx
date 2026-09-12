@@ -12,7 +12,7 @@ export default function About() {
                     <p>
                         His experience spans architectural detailing and Revit
                         production work at PJC Architecture, alongside on-site
-                        construction work with Quadrant Consultants Development —
+                        construction work with Quadrant Consultants Development
                         a combination of design-side and build-side perspective that
                         shapes how he approaches a project.
                     </p>
